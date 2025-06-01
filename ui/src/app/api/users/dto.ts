@@ -134,11 +134,13 @@ export class RegistryDtoOfUserRegistryItem {
 export class UserRegistryItem {
     id!: string | null;
     name!: string | null;
+    selected!: boolean | null;
 
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"] !== undefined ? _data["id"] : <any>null;
             this.name = _data["name"] !== undefined ? _data["name"] : <any>null;
+            this.selected = _data["selected"] !== undefined ? _data["selected"] : <any>null;
         }
     }
 
@@ -153,6 +155,7 @@ export class UserRegistryItem {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id !== undefined ? this.id : <any>null;
         data["name"] = this.name !== undefined ? this.name : <any>null;
+        data["selected"] = this.selected !== undefined ? this.selected : <any>null;
         return data;
     }
 }

@@ -8,8 +8,8 @@ const UsersController = {
 
     try {
       //  filter data
-      if (name !== store.filter.fullName) {
-        store.filter.fullName = name;
+      if (name !== store.filter.name) {
+        store.filter.name = name;
 
         const filteredData = name === null ? store.data.items : FilterDataService.filter(store.data.items,'name', name);
         store.filteredData = { items: filteredData, itemsCount: filteredData.length };
@@ -37,9 +37,28 @@ const UsersController = {
   },
 
   select: async (req, res) => {
-    const { index, selected } = req.body;
+    const { id, selected } = req.body;
 
     try {
+      const user = store.filteredData.items.find(user => user.id === id);
+      user.selected = selected;
+
+      res.json(true);
+    } catch (error) {
+      console.error("Error in search:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  },
+
+  allSelect: async (req, res) => {
+    const { selected } = req.body;
+
+    console.log(selected);
+
+    try {
+      store.filteredData.items.forEach(user => {
+        user.selected = selected;
+      })
 
       res.json(true);
     } catch (error) {

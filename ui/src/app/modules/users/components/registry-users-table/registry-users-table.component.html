@@ -17,17 +17,17 @@
             <ng-container matColumnDef="{{columns.Actions}}">
                 <th mat-header-cell
                     *matHeaderCellDef>
-                    <mat-checkbox [checked]="allSelected"
+                    <mat-checkbox [checked]="isAllSelected()"
                                   class="checkbox"
                                   color="primary"
                                   (change)="toggleSelectAllUsers($event)"></mat-checkbox>
                 </th>
                 <td mat-cell
                     *matCellDef="let user">
-                    <mat-checkbox [checked]="isSelected(user.id)"
+                    <mat-checkbox [checked]="user.selected"
                                   class="checkbox"
                                   color="primary"
-                                  (change)="selectUser($event)">
+                                  (change)="selectUser($event, user.id)">
                     </mat-checkbox>
                 </td>
             </ng-container>

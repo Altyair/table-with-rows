@@ -28,5 +28,7 @@
     [usersDataSource]="data"
     [isLoading]="isTableLoading"
     (onPageSizeIncrease)="onPageSizeIncrease()"
+    (onSelectChange)="onSelectChange($event)"
+    (onAllSelectChange)="onAllSelectChange($event)"
 >
 </sfs-registry-users-table>

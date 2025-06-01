@@ -15,6 +15,7 @@ const CreateInitDataService = {
             items.push({
                 id: i,
                 name: this.generateRandomString(10),
+                selected: false,
             })
         }
         return {

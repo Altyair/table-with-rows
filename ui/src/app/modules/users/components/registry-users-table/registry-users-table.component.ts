@@ -30,17 +30,20 @@ export class RegistryUsersTableComponent implements AfterViewInit, OnDestroy {
     @ViewChild('table') table!: MatTable<RegistryUsersTableComponent>;
 
     @Input() usersDataSource: UserRegistryItem[] = [];
+    @Input() isLoading: boolean = false;
+
     @Output() onSortChange = new EventEmitter<any>();
 
-    @Input() isLoading: boolean = false;
     @Output() onPageSizeIncrease: EventEmitter<void> = new EventEmitter<void>();
+
+    @Output() onSelectChange = new EventEmitter<any>();
+    @Output() onAllSelectChange = new EventEmitter<any>();
 
     private destroy$: Subject<void> = new Subject();
 
     columns = Columns;
     displayedColumns: string[] = Object.values(Columns);
     public allSelected = false;
-    public selectedUsersIds: string[] | undefined = [];
 
     constructor(private readonly usersClient: UsersClient, private readonly cdr: ChangeDetectorRef) {}
 
@@ -56,18 +59,17 @@ export class RegistryUsersTableComponent implements AfterViewInit, OnDestroy {
     }
 
     toggleSelectAllUsers(event?: any): void {
-        if (event) {
-            this.allSelected = event.checked;
-        }
-        this.selectedUsersIds = this.allSelected ? this.usersDataSource?.map((item: any) => item.id) : [];
-        this.cdr.detectChanges();
+        this.allSelected = event.checked;
+        this.onAllSelectChange.emit(event.checked);
     }
 
-    isSelected(id: string): boolean {
-        return !!this.selectedUsersIds?.includes(id);
+    isAllSelected(): boolean {
+        return !this.usersDataSource.some((user) => !user.selected);
     }
 
-    public selectUser(event: any): void {}
+    public selectUser(event: any, id: string): void {
+        this.onSelectChange.emit({ selected: event.checked, id });
+    }
 
     onScroll(event?: any): void {
         if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight) {

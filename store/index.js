@@ -11,10 +11,10 @@ const store =  {
             orderBy: "name",
             page: 1,
         },
+        allSelected: false,
     },
     data: Object.freeze(INIT_DATA),
     filteredData: structuredClone(INIT_DATA),
-    selectedItems: [],
 }
 
 module.exports = store;

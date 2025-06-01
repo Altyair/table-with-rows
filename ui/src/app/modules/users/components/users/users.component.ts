@@ -130,4 +130,29 @@ export class UsersComponent implements OnInit, OnDestroy {
             },
         });
     }
+
+    public onSelectChange(event: { selected: boolean; id: string }): void {
+        this.usersClient.select(event.selected, Number(event.id)).subscribe({
+            next: (data) => {
+                this.isTableLoading = false;
+            },
+            error: () => {
+                this.isTableLoading = false;
+            },
+        });
+    }
+
+    public onAllSelectChange(selected: any): void {
+        this.usersClient.allSelect(selected).subscribe({
+            next: (data) => {
+                this.isTableLoading = false;
+                this.data.forEach((user) => {
+                    user.selected = selected;
+                });
+            },
+            error: () => {
+                this.isTableLoading = false;
+            },
+        });
+    }
 }

@@ -117,14 +117,14 @@ export class UsersClient {
     /**
      * Пометить элемент как выбранный в списке.
      * @param selected.
-     * @param index.
+     * @param id.
      * @return Возвращает булево значение.
      */
-    select(selected: boolean, index: number): Observable<boolean> {
+    select(selected: boolean, id: number): Observable<boolean> {
         let url_ = this.baseUrl + '/api/users/select';
         url_ = url_.replace(/[?&]$/, '');
 
-        const content_ = JSON.stringify({ selected, index });
+        const content_ = JSON.stringify({ selected, id });
 
         const options_: any = {
             body: content_,
@@ -140,14 +140,14 @@ export class UsersClient {
             .request('post', url_, options_)
             .pipe(
                 _observableMergeMap((response_: any) => {
-                    return this.processMove(response_);
+                    return this.processSelect(response_);
                 })
             )
             .pipe(
                 _observableCatch((response_: any) => {
                     if (response_ instanceof HttpResponseBase) {
                         try {
-                            return this.processMove(response_ as any);
+                            return this.processSelect(response_ as any);
                         } catch (e) {
                             return _observableThrow(e) as any as Observable<boolean>;
                         }
@@ -158,7 +158,50 @@ export class UsersClient {
             );
     }
 
-    protected processMove(response: HttpResponseBase): Observable<boolean> {
+    /**
+     * Пометить все записи как выбранные в списке.
+     * @param selected.
+     * @return Возвращает булево значение.
+     */
+    allSelect(selected: boolean): Observable<boolean> {
+        let url_ = this.baseUrl + '/api/users/all-select';
+        url_ = url_.replace(/[?&]$/, '');
+
+        const content_ = JSON.stringify({ selected });
+
+        const options_: any = {
+            body: content_,
+            observe: 'response',
+            responseType: 'blob',
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+            }),
+        };
+
+        return this.http
+            .request('post', url_, options_)
+            .pipe(
+                _observableMergeMap((response_: any) => {
+                    return this.processSelect(response_);
+                })
+            )
+            .pipe(
+                _observableCatch((response_: any) => {
+                    if (response_ instanceof HttpResponseBase) {
+                        try {
+                            return this.processSelect(response_ as any);
+                        } catch (e) {
+                            return _observableThrow(e) as any as Observable<boolean>;
+                        }
+                    } else {
+                        return _observableThrow(response_) as any as Observable<boolean>;
+                    }
+                })
+            );
+    }
+
+    protected processSelect(response: HttpResponseBase): Observable<boolean> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse
