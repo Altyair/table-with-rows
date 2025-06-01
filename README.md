@@ -27,3 +27,5 @@ npm run start
 ```
 docker compose up
 ```
+
+Далее запуск в браузере: http://localhost:4201
