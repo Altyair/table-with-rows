@@ -9,7 +9,7 @@ export const FILTERS_MODEL = {
 })
 export class FilterStateService {
     saveFilters(filters: { [key: string]: any }): void {
-        sessionStorage.setItem('filters', JSON.stringify(filters));
+        localStorage.setItem('filters', JSON.stringify(filters));
     }
 
     saveFilter<T>(filter: T, type: string): void {
@@ -24,7 +24,7 @@ export class FilterStateService {
     }
 
     loadFilters(): { [key: string]: any } {
-        const filters = sessionStorage.getItem('filters');
+        const filters = localStorage.getItem('filters');
         return filters ? JSON.parse(filters) : {};
     }
 }

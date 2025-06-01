@@ -4,8 +4,8 @@ services:
     build: .
     ports:
       - '3000:3000'
-    #depends_on:
-    #  - angular-app
+    depends_on:
+     - angular-app
     develop:
       watch:
         - action: rebuild
@@ -13,8 +13,8 @@ services:
         - action: sync
           path: .
           target: /app
-  #angular-app:
-  #  build: ../ui
-  #  ports:
-  #    - '80:80'
+  angular-app:
+    build: ./ui
+    ports:
+      - '4201:4200'
 

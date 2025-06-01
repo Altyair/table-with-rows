@@ -62,8 +62,8 @@ export class UsersComponent implements OnInit, OnDestroy {
             this.searchParameters.page = 1;
             const values = UserRegistrySearchModel.fromJS(filter);
             this.filterForm.patchValue(values);
-            this.search();
         }
+        this.search();
     }
 
     onPageSizeIncrease(): void {

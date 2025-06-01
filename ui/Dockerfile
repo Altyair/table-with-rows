@@ -1,23 +1,11 @@
-# Stage 1: Build React Application
-FROM node:14 AS build
+FROM node:lts-alpine
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+COPY . /usr/src/app
+
+RUN npm install -g @angular/cli
 
 RUN npm install
 
-COPY . .
-
-RUN npm run build
-
-# Stage 2: Serve React Application with Nginx
-FROM nginx:stable-alpine
-
-COPY --from=build /usr/src/app/build /usr/share/nginx/html
-
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-#EXPOSE 8000
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["ng", "serve", "--host", "0.0.0.0"]
