@@ -1,0 +1,72 @@
+@import 'src/scss/variables.scss';
+
+.btn-block {
+    margin-left: auto;
+    margin-right: 0;
+}
+:host {
+    .mat-mdc-card {
+        margin-bottom: 0;
+    }
+}
+
+.header-button-last {
+    margin-inline-start: auto;
+    margin-inline-end: 0;
+}
+
+.btn-block {
+    .search {
+        pointer-events: auto;
+    }
+}
+
+.btn-table-block {
+    display: flex;
+
+    .table-btn {
+        position: relative;
+        margin-inline-start: auto;
+        margin-inline-end: 0;
+        z-index: 2;
+    }
+
+    .top {
+        top: 56px;
+    }
+
+    .bottom {
+        bottom: 48px;
+    }
+}
+
+.options {
+    gap: 40px;
+}
+
+.not-found {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 16px 0;
+    margin-top: 24px;
+}
+
+.col-auto {
+    width: 13.8%;
+}
+
+.gap {
+    gap: 32px;
+}
+
+@media (min-width: $grid-breakpoint-xl + 1) {
+    .col-4-5 {
+        flex: 0 0 auto;
+        width: 39.16666666%;
+    }
+
+    .col-xxl-3-5 {
+        flex: 0 0 auto;
+        width: 27.3666666%;
+    }
+}

@@ -1,0 +1,32 @@
+<h4>Пользователи</h4>
+
+<mat-card class="negative-margin-right negative-margin-left" [formGroup]="filterForm">
+    <mat-card-content>
+        <div class="flex-nowrap row align-items-center">
+            <div class="col-4">
+                <sfs-input
+                    [label]="'Имя пользователя'"
+                    [formControl]="filterForm.controls.name"
+                    (search)="search()"
+                    (onClear)="onClearName()"
+                ></sfs-input>
+            </div>
+            <div class="col-2 justify-content-end btn-block">
+                <sfs-form-buttons
+                    (secondaryClick)="reset()"
+                    (mainClick)="search()"
+                    [mainButtonDisabled]="!filterForm.valid"
+                >
+                </sfs-form-buttons>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<sfs-registry-users-table
+    (onSortChange)="onSortChange($event)"
+    [usersDataSource]="data"
+    [isLoading]="isTableLoading"
+    (onPageSizeIncrease)="onPageSizeIncrease()"
+>
+</sfs-registry-users-table>

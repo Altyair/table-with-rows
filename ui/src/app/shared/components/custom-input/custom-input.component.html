@@ -1,0 +1,46 @@
+<sfs-custom-field
+        [customControl]="formControl"
+        [minlength]="minlength"
+        [maxlength]="maxlength"
+        [maxlengthError]="maxlengthError"
+        [minlengthError]="minlengthError"
+        [requiredError]="requiredError"
+        [maxError]="maxError"
+        [minError]="minError"
+        [patternError]="patternError"
+        [patternErrorDisable]="patternErrorDisable">
+    <mat-form-field class="sfs-mat-form-field"
+                    [matTooltip]="tooltipText"
+                    [matTooltipDisabled]="tooltipDisabled"
+                    [floatLabel]="formControl.value ? 'always' : 'auto'">
+        <mat-label>{{ label }}</mat-label>
+        <input
+                matInput
+                [type]="type"
+                autocomplete="autocomplete-off"
+                [formControl]="formControl"
+                [maxlength]="maxlength"
+                [minlength]="minlength"
+                (keydown.enter)="searchItems()"
+                (change)="checkEmptyString()"
+                (blur)="blur()"
+                [mask]="(maskOptions$ | async)?.mask!"
+                [decimalMarker]="maskDecimalMarker"
+                [separatorLimit]="(maskOptions$ | async)?.separatorLimit || null"
+                [allowNegativeNumbers]="(maskOptions$ | async)?.allowNegativeNumbers || false"
+                [placeholder]="prefixText"
+                [prefix]="prefixText"
+        />
+        <button
+                *ngIf="showClearBtn || (isValuePresent() && formControl.enabled)"
+                [tabIndex]="-1"
+                matSuffix
+                mat-icon-button
+                aria-label="Очистить"
+                (click)="resetControl(formControl)"
+        >
+            <mat-icon>close</mat-icon>
+        </button>
+        <span *ngIf="suffix" matTextSuffix [innerHtml]="suffix"></span>
+    </mat-form-field>
+</sfs-custom-field>

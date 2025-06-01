@@ -1,0 +1,15 @@
+@import 'src/scss/variables';
+
+.http-error {
+    &__wrapper {
+        width: 600px;
+        height: 200px;
+        margin: 200px auto auto auto;
+        font-size: 18px;
+    }
+    &__title {
+        width: 50%;
+        color: $light-color;
+        margin: 0 auto 32px auto;
+    }
+}

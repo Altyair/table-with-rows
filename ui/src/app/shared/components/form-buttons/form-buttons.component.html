@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-end">
+    <div id="secondary-button" [matTooltip]="secondaryButtonDisabledTooltip"
+         [matTooltipDisabled]="!secondaryButtonDisabled">
+        <button mat-button
+                color="primary"
+                [disabled]="secondaryButtonDisabled"
+                (click)="onSecondaryClick()">
+            {{ secondaryButtonText }}
+        </button>
+    </div>
+    <div id="main-button" [matTooltip]="mainButtonDisabledTooltip"
+         [matTooltipDisabled]="!mainButtonDisabled">
+        <button mat-raised-button
+                color="primary"
+                [disabled]="mainButtonDisabled"
+                (click)="onMainClick()">
+            {{ mainButtonText }}
+        </button>
+    </div>
+</div>

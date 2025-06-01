@@ -1,0 +1,29 @@
+<ng-content></ng-content>
+<div *ngIf="customControl" class="error-container">
+
+    <mat-error *ngIf="customControl.hasError('required') && customControl.touched && requiredError.length">{{ requiredError }} </mat-error>
+    <mat-error *ngIf="customControl.hasError('maxlength') && maxlengthError.length">{{ maxlengthError }} </mat-error>
+
+    <mat-error *ngIf="customControl.hasError('minlength') && minlengthError.length">{{ minlengthError }} </mat-error>
+
+    <mat-error *ngIf="customControl.hasError('max') && maxError"> {{ maxError }} </mat-error>
+
+    <mat-error *ngIf="customControl.hasError('min') && minError"> {{ minError }} </mat-error>
+
+    <mat-error *ngIf="customControl.value && errorPattern && !patternErrorDisable">{{ patternError }} </mat-error>
+
+    <mat-error *ngIf="customControl.hasError('notFound')" class="error">
+        {{ customControl.getError('notFound') }}
+    </mat-error>
+
+    <mat-error *ngIf="customControl.hasError('arbitraryError')" class="error">
+        {{ customControl.getError('arbitraryError') }}
+    </mat-error>
+
+    <mat-error *ngIf="customControl.hasError('errorFromServer')">{{ customControl.getError('errorFromServer') }}</mat-error>
+    <div [ngClass]="[errorListStyle]">
+        <ng-container *ngIf="customControl.hasError('errorListFromServer')" ngProjectAs="mat-error">
+            <mat-error *ngFor="let error of customControl.getError('errorListFromServer')">{{ error }}</mat-error>
+        </ng-container>
+    </div>
+</div>
