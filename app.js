@@ -14,9 +14,16 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.set('view engine', 'pug');
 
 app.use('/api', require('./routes'));
+
+// Слушаем статические файлы из каталога `dist/angular-app`:
+app.use(express.static('./ui/dist'));
+
+// Общий маршрут для обслуживания `index.html`:
+app.get('*', (req, res) => {
+  res.sendFile(__dirname + '/ui/dist/index.html')
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
