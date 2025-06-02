@@ -18,6 +18,7 @@
         "target": "es2022",
         "module": "es2020",
         "lib": ["es2020", "dom"],
+        "noImplicitAny": false,
         "paths": {
             "@shared/*": ["./src/app/shared/*"],
             "@shared": ["./src/app/shared"],
@@ -31,5 +32,5 @@
         "strictInputAccessModifiers": true,
         "strictTemplates": true
     },
-	"exclude": []
+    "exclude": []
 }

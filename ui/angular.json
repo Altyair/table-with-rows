@@ -17,16 +17,16 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "../Src/Sfs.Internal.WebApi/wwwroot",
+                        "outputPath": "dist",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "src/tsconfig.app.json",
                         "aot": false,
                         "assets": [
-                          "src/favicon.ico",
-                          "src/assets",
-                          "src/manifest.webmanifest"
+                            "src/favicon.ico",
+                            "src/assets",
+                            "src/manifest.webmanifest"
                         ],
                         "styles": [
                             "node_modules/@ng-select/ng-select/themes/default.theme.css",
@@ -40,11 +40,11 @@
                         "optimization": false,
                         "namedChunks": true,
                         "allowedCommonJsDependencies": [
-                          "lodash",
-                          "file-saver"
+                            "lodash",
+                            "file-saver"
                         ],
-                      "serviceWorker": true,
-                      "ngswConfigPath": "ngsw-config.json"
+                        "serviceWorker": true,
+                        "ngswConfigPath": "ngsw-config.json"
                     },
                     "configurations": {
                         "production": {
@@ -81,18 +81,18 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                      "buildTarget": "ui:build"
+                        "buildTarget": "ui:build"
                     },
                     "configurations": {
                         "production": {
-                          "buildTarget": "ui:build:production"
+                            "buildTarget": "ui:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                      "buildTarget": "ui:build"
+                        "buildTarget": "ui:build"
                     }
                 },
                 "e2e": {
@@ -111,6 +111,6 @@
         }
     },
     "cli": {
-      "analytics": false
+        "analytics": false
     }
 }

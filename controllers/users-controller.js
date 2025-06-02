@@ -53,8 +53,6 @@ const UsersController = {
   allSelect: async (req, res) => {
     const { selected } = req.body;
 
-    console.log(selected);
-
     try {
       store.filteredData.items.forEach(user => {
         user.selected = selected;

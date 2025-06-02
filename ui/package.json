@@ -42,9 +42,10 @@
     "zone.js": "^0.14.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^17.1.1",
-    "@angular/cli": "^17.1.1",
+    "@angular-devkit/build-angular": "^17.1.0",
+    "@angular/cli": "^17.1.0",
     "@angular/compiler-cli": "^17.1.0",
+    "@types/entities": "^1.1.1",
     "@types/jest": "^29.5.12",
     "@types/luxon": "^3.2.0",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
