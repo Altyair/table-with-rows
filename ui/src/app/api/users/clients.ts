@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders, HttpResponse, HttpResponseBase } from '@angula
 
 import { ErrorDto, UserRegistrySearchModel, RegistryDtoOfUserRegistryItem } from './dto';
 
-export const SERVER_BASE_URL = 'http://localhost:3000';
+export const SERVER_BASE_URL = 'https://example-server-production-7c82.up.railway.app';
 
 @Injectable({
     providedIn: 'root',

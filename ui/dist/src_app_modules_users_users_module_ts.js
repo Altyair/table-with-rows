@@ -28,7 +28,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const SERVER_BASE_URL = 'http://localhost:3000';
+const SERVER_BASE_URL = 'https://example-server-production-7c82.up.railway.app';
 let UsersClient = class UsersClient {
   http;
   baseUrl;
