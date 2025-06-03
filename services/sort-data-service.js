@@ -1,17 +1,5 @@
-class Comparators {
-    static compareInRussian = (c, d) => compareInLowerCase(c, d, new Intl.Collator('ru').compare);
-}
-
-function compareInLowerCase(a, b, comparator) {
-    if (typeof a === 'string' && typeof b === 'string') {
-        a = a.toLowerCase();
-        b = b.toLowerCase();
-    }
-    return comparator(a, b);
-}
-
 const SortDataService = {
-     sort: (array, selector, orderAsc = true) => {
+    sort: (array, selector, orderAsc = true) => {
         return array.sort((a, b) => {
             const v1 = orderAsc ? selector(a) : selector(b);
             const v2 = orderAsc ? selector(b) : selector(a);
@@ -22,7 +10,7 @@ const SortDataService = {
                 return -1;
             }
             if (typeof v1 === 'string' && typeof v2 === 'string') {
-                return Comparators.compareInRussian(v1, v2);
+                return v1.toLowerCase().localeCompare(v2.toLowerCase());
             }
             return v1 === v2 ? 0 : v1 < v2 ? -1 : 1;
         });

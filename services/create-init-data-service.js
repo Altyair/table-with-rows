@@ -11,10 +11,11 @@ const CreateInitDataService = {
 
     createData: function (countItems) {
         const items = [];
-        for (let i = 1; i <= countItems; i++) {
+        for (let i = countItems; i--; i >= 1 ) {
             items.push({
                 id: i,
-                name: this.generateRandomString(10),
+                //name: this.generateRandomString(10),
+                name: String(i),
                 selected: false,
             })
         }

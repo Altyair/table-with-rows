@@ -1,11 +1,11 @@
-<div [hidden]="!usersDataSource.length" class="pos-relative" style="margin-top: 50px">
+<div class="pos-relative" style="margin-top: 50px">
     <div class="table-spinner__wrapper"
          *ngIf="isLoading">
         <div class="table-spinner">
             <mat-spinner [diameter]="60"></mat-spinner>
         </div>
     </div>
-    <div [ngClass]="{ blur: isLoading }" class="scroll-container" (scroll)="onScroll($event)">
+    <div [hidden]="!usersDataSource.length" [ngClass]="{ blur: isLoading }" class="scroll-container" (scroll)="onScroll($event)">
         <table mat-table
                #table
                cdkDropList

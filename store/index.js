@@ -1,6 +1,6 @@
 const { CreateInitDataService } = require("../services");
 
-const INIT_DATA = CreateInitDataService.createData(500);
+const INIT_DATA = CreateInitDataService.createData(1000000);
 
 const store =  {
     filter: {
